@@ -15,7 +15,7 @@ class Inputs:
 class Driver:
     def __init__(self):
         opt = Options()
-        opt.add_argument("--headless")
+        #opt.add_argument("--headless")
         opt.add_argument("--log-level=3")
         self.driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(),options=opt,service_log_path=os.devnull)
 
@@ -59,6 +59,18 @@ class Logger_Manager:
             if i[0] == "M":
                 s = i[1:3]
             else :
+                for k in range(1,len(i)):
+                    if i[k] == ')':
+                        try :
+                            p = int(i[k-1])
+                        except :
+                            i = i[:k]+ '-' +i[k+1:]
+                for k in range(len(i)-1):
+                    if i[k] == '(':
+                        try :
+                            p = int(i[k+1])
+                        except :
+                            i = i[:k]+ '-' +i[k+1:]
                 l_1= i.split('(')
                 l_2=l_1[1].split(')')
                 l_1[1] = l_2[0]
