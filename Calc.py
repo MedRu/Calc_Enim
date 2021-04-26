@@ -15,7 +15,7 @@ class Inputs:
 class Driver:
     def __init__(self):
         opt = Options()
-        #opt.add_argument("--headless")
+        opt.add_argument("--headless")
         opt.add_argument("--log-level=3")
         self.driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(),options=opt,service_log_path=os.devnull)
 
